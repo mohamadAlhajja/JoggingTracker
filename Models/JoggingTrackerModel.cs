@@ -1,6 +1,6 @@
 ﻿namespace JoggingTrackerAPI.Models
 {
-    public class JoggingRecordModel
+    public class JoggingTrackerModel
     {
         public int Id { get; set; }
         public int UserId { get; set; }

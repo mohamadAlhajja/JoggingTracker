@@ -1,6 +1,9 @@
 ﻿
 using Microsoft.AspNetCore.Identity;
 
-public class UserModel : IdentityUser
-{ 
+namespace JoggingTrackerAPI.Models
+{
+    public class UserModel : IdentityUser
+    {
+    }
 }
