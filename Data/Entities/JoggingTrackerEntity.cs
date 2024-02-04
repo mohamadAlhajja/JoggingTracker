@@ -1,18 +1,17 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace JoggingTrackerAPI.Models
+namespace JoggingTrackerAPI.Data.Entities
 {
-    public class JoggingTrackerModel
+    public class JoggingTrackerEntity
     {
-        [Required]
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
         public string UserId { get; set; } = default!;
-        [Required]
+        public UserEntity? User { get; set; }
         public DateTime Date { get; set; }
-        [Required]
         public double Distance { get; set; }
-        [Required]
         public TimeSpan Time { get; set; }
-        [Required]
         public string Location { get; set; } = string.Empty;
     }
 }

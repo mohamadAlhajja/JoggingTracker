@@ -1,4 +1,4 @@
-﻿using JoggingTrackerAPI.Models;
+﻿using JoggingTrackerAPI.Data.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -12,10 +12,10 @@ namespace JoggingTrackerAPI.Controllers;
 [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 public class RoleController : ControllerBase
 {
-    private readonly UserManager<UserModel> _userManager;
+    private readonly UserManager<UserEntity> _userManager;
     private readonly RoleManager<IdentityRole> _roleManager;
 
-    public RoleController(UserManager<UserModel> userManager, RoleManager<IdentityRole> roleManager)
+    public RoleController(UserManager<UserEntity> userManager, RoleManager<IdentityRole> roleManager)
     {
         _userManager = userManager;
         _roleManager = roleManager;
@@ -66,11 +66,14 @@ public class RoleController : ControllerBase
         if (user == null)
         {
             return NotFound("User not found");
-        }
-
+        }      
         var roleExists = await _roleManager.RoleExistsAsync(roleName);
         if (!roleExists)
         {
+            if (roleName == "UseManager")
+            {
+                await _userManager.RemoveFromRoleAsync(user, roleName);
+            }
             var roleResult = await _roleManager.CreateAsync(new IdentityRole(roleName));
             if (!roleResult.Succeeded)
             {

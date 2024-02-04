@@ -1,4 +1,6 @@
-﻿using JoggingTrackerAPI.Models;
+﻿using JoggingTrackerAPI.Data;
+using JoggingTrackerAPI.Data.Entities;
+using JoggingTrackerAPI.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -14,14 +16,20 @@ namespace JoggingTrackerAPI.Controllers;
 public class LogInRegisterController : ControllerBase
 {
     private readonly IConfiguration _config;
-    private readonly UserManager<UserModel> _userManager;
-
+    private readonly UserManager<UserEntity> _userManager;
+    private readonly RoleManager<IdentityRole> _roleManager;
+    private readonly AppDbContext _dbContext;
     public LogInRegisterController(
         IConfiguration config,
-        UserManager<UserModel> userManager)
+        UserManager<UserEntity> userManager,
+        RoleManager<IdentityRole> roleManager,
+        AppDbContext dbContext)
     {
         _config = config;
         _userManager = userManager;
+        _roleManager = roleManager;
+        _dbContext = dbContext;
+        IntializeUser();
     }
 
     [HttpPost("login")]
@@ -59,7 +67,7 @@ public class LogInRegisterController : ControllerBase
         else
         {
 
-            var user = new UserModel
+            var user = new UserEntity
             {
                 UserName = model.UserLoginName,
                 Email = model.Email,
@@ -79,7 +87,7 @@ public class LogInRegisterController : ControllerBase
         }
     }
 
-    private async Task<string> GenerateJwtToken(UserModel user)
+    private async Task<string> GenerateJwtToken(UserEntity user)
     {
         var roles = await _userManager.GetRolesAsync(user);
         var claims = new List<Claim>
@@ -105,6 +113,33 @@ public class LogInRegisterController : ControllerBase
         );
 
         return new JwtSecurityTokenHandler().WriteToken(token);
+    }
+
+    private async Task AddRoleAsync(string roleName)
+    {
+        var roleExists = await _roleManager.RoleExistsAsync(roleName);
+
+        if (!roleExists)
+        {
+            await _roleManager.CreateAsync(new IdentityRole(roleName));
+        }
+    }
+
+    private void IntializeUser()
+    {
+        AddRoleAsync("Admin").Wait();
+        AddRoleAsync("UserManager").Wait();
+        AddRoleAsync("User").Wait();
+        if (_dbContext.Users.IsNullOrEmpty())
+        {
+            var user = new UserEntity
+            {
+                UserName = "Admin",
+                Email = "Admin@gmail.com",
+            };
+            _userManager.CreateAsync(user, "Admin@20").Wait();
+            _userManager.AddToRoleAsync(user, "Admin").Wait();
+        }
     }
 }
 

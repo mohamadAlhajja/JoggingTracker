@@ -1,18 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace JoggingTrackerAPI.Models
+﻿namespace JoggingTrackerAPI.Models
 {
-    public class JoggingTrackerModel
+    public class JoggingTrackerResource
     {
-        [Required]
+        public int Id { get; set; }
         public string UserId { get; set; } = default!;
-        [Required]
         public DateTime Date { get; set; }
-        [Required]
         public double Distance { get; set; }
-        [Required]
         public TimeSpan Time { get; set; }
-        [Required]
         public string Location { get; set; } = string.Empty;
     }
 }

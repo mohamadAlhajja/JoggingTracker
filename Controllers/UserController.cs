@@ -1,3 +1,5 @@
+using JoggingTrackerAPI.Data;
+using JoggingTrackerAPI.Data.Entities;
 using JoggingTrackerAPI.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -13,9 +15,9 @@ namespace JoggingTrackerAPI.Controllers;
 [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 public class UserController : ControllerBase
 {
-    private readonly UserManager<UserModel> _userManager;
+    private readonly UserManager<UserEntity> _userManager;
 
-    public UserController(UserManager<UserModel> userManager)
+    public UserController(UserManager<UserEntity> userManager)
     {
         _userManager = userManager;
     }

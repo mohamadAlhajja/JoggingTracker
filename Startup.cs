@@ -1,12 +1,13 @@
 ﻿
 using JoggingTrackerAPI.Data;
-using JoggingTrackerAPI.Models;
+using JoggingTrackerAPI.Data.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace JoggingTrackerAPI
 {
@@ -32,7 +33,7 @@ namespace JoggingTrackerAPI
                 ServiceLifetime.Scoped
             );
 
-            services.AddIdentity<UserModel, IdentityRole>()
+            services.AddIdentity<UserEntity, IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
 
