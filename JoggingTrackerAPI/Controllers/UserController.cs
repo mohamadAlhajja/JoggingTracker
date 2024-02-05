@@ -1,4 +1,3 @@
-using JoggingTrackerAPI.Data;
 using JoggingTrackerAPI.Data.Entities;
 using JoggingTrackerAPI.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
