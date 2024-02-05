@@ -57,7 +57,7 @@ public class RoleController : ControllerBase
         }
     }
 
-    [HttpPut("api/attach-role")]
+    [HttpPut("attach-role")]
     [Authorize(Roles = "Admin,UserManager")]
     public async Task<IActionResult> AddRoleToUser(string userId, string roleName)
     {
@@ -93,7 +93,7 @@ public class RoleController : ControllerBase
         }
     }
 
-    [HttpPut("api/detach-role")]
+    [HttpPut("detach-role")]
     [Authorize(Roles = "Admin,UserManager")]
     public async Task<IActionResult> RemoveUserFromRole(string userId, string roleName)
     {

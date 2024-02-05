@@ -5,6 +5,10 @@ VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JoggingTrackerAPI", "JoggingTrackerAPI.csproj", "{0D17F09C-B1A1-4971-A2E2-52ADD7A9E684}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "..\UnitTest\UnitTest.csproj", "{28123495-2C08-4277-A705-B38C35F1B13D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests", "..\IntegrationTests\IntegrationTests.csproj", "{12B2EB2B-2329-43D2-BA71-92270C8EAD8B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{0D17F09C-B1A1-4971-A2E2-52ADD7A9E684}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D17F09C-B1A1-4971-A2E2-52ADD7A9E684}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D17F09C-B1A1-4971-A2E2-52ADD7A9E684}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28123495-2C08-4277-A705-B38C35F1B13D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28123495-2C08-4277-A705-B38C35F1B13D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28123495-2C08-4277-A705-B38C35F1B13D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28123495-2C08-4277-A705-B38C35F1B13D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12B2EB2B-2329-43D2-BA71-92270C8EAD8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12B2EB2B-2329-43D2-BA71-92270C8EAD8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12B2EB2B-2329-43D2-BA71-92270C8EAD8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12B2EB2B-2329-43D2-BA71-92270C8EAD8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

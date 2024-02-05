@@ -66,7 +66,6 @@ public class LogInRegisterController : ControllerBase
 
         else
         {
-
             var user = new UserEntity
             {
                 UserName = model.UserLoginName,
@@ -108,7 +107,7 @@ public class LogInRegisterController : ControllerBase
             _config["Jwt:Issuer"],
             _config["Jwt:Audience"],
             claims,
-            expires: DateTime.UtcNow.AddHours(1),
+            expires: DateTime.UtcNow.AddHours(10),
             signingCredentials: credentials
         );
 

@@ -27,7 +27,7 @@ namespace JoggingTrackerAPI.Controllers
         [Authorize(Roles = "Admin,User")]
         public async Task<IActionResult> GetJoggingRecord(int id)
         {
-            var joggingRecord = await _dbContext.JoggingTrackerEntity.FindAsync(id);
+            var joggingRecord = await _dbContext.JoggingTrackerEntity.FindAsync(new object[] { id });
 
             if (joggingRecord == null)
             {

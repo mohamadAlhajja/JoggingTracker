@@ -22,7 +22,7 @@ public class UserController : ControllerBase
         _userManager = userManager;
     }
 
-    [HttpGet("users")]
+    [HttpGet("all-users")]
     [Authorize]
     public async Task<ActionResult<IEnumerable<UserModel>>> GetAllUsers(int? skip, int? take)
     {
