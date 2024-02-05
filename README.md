@@ -1,4 +1,4 @@
-#Jogging Tracker API
+#Jogging Tracker API (Demo Project)
 The Jogging Tracker API is designed to track the jogging times of users, providing features for user management, record tracking, and reporting. It follows RESTful principles and requires authentication for all API calls.
 
 #User Management
@@ -8,11 +8,11 @@ The Jogging Tracker API is designed to track the jogging times of users, providi
 --Role-based Access Control.
    The API implements three roles with different permission levels:
        Regular User:
-           Can CRUD (Create, Read, Update, Delete) only their own jogging records.
+           Can CRUD (Create, Read, Update, Delete) only their jogging records.
        User Manager:
           Can CRUD only users.
        Admin:
-          Can CRUD all jogging records and users.
+          Can CRUD all jogging records and users
 
 #Jogging Records
 -Each time entry includes a date, distance, time, and location.
